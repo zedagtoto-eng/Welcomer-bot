@@ -1,4 +1,4 @@
-const {
+ const {
   Client,
   GatewayIntentBits,
   EmbedBuilder
@@ -11,7 +11,7 @@ const client = new Client({
   ]
 });
 
-const WELCOME_CHANNEL_ID = "1540632238826201099";
+const WELCOME_CHANNEL_ID = "1541096586883367143";
 
 client.once("ready", () => {
   console.log(`✅ ${client.user.tag} is online!`);
