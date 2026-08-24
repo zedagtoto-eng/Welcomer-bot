@@ -1,4 +1,4 @@
- const {
+const {
   Client,
   GatewayIntentBits,
   EmbedBuilder
@@ -47,7 +47,7 @@ client.on("guildMemberAdd", async (member) => {
       `**Member #${member.guild.memberCount} | ID: ${member.id}**`
     )
     .setThumbnail(avatar)
-    .setColor("#8B4513")
+    .setColor("#FF69B4") // 🌸 PINK
     .setTimestamp();
 
   await channel.send({
