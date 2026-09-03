@@ -37,10 +37,25 @@ async def on_ready():
 
 @bot.event
 async def on_member_join(member):
-    channel = member.guild.get_channel(WELCOME_CHANNEL_ID)
 
-    if channel is None:
-        print("❌ Welcome channel not found.")
+    try:
+        channel = await bot.fetch_channel(WELCOME_CHANNEL_ID)
+
+    except discord.NotFound:
+        print(f"❌ Channel ID {WELCOME_CHANNEL_ID} does not exist.")
+        return
+
+    except discord.Forbidden:
+        print("❌ Bot does not have permission to access the welcome channel.")
+        return
+
+    except discord.HTTPException as e:
+        print(f"❌ Discord API error: {e}")
+        return
+
+    # Make sure the channel is a text channel
+    if not isinstance(channel, discord.TextChannel):
+        print("❌ The welcome channel is not a text channel.")
         return
 
     avatar = member.display_avatar.replace(
